@@ -1,0 +1,15 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "a sample snake game",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@snowpack/plugin-babel": "^2.1.5",
+    "snowpack": "^2.18.4"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/snowpack dev",
+    "build": "./node_modules/.bin/snowpack build"
+  }
+}
