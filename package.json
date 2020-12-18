@@ -8,6 +8,8 @@
     "@snowpack/plugin-babel": "^2.1.5",
     "snowpack": "^2.18.4"
   },
+  "author": "Kevin",
+  "license": "ISC",
   "scripts": {
     "start": "./node_modules/.bin/snowpack dev",
     "build": "./node_modules/.bin/snowpack build"

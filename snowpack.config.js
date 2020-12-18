@@ -10,4 +10,10 @@ module.exports = {
     out: "build",
     clean: true,
   },
+  experiments: {
+    optimize: {
+      bundle: true,
+      minify: false,
+    }
+  }
 };
