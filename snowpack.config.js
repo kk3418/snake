@@ -13,7 +13,7 @@ module.exports = {
   experiments: {
     optimize: {
       bundle: true,
-      minify: false,
+      minify: true,
     }
   }
 };
