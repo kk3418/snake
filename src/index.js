@@ -5,6 +5,7 @@ import { outsideGrid } from './grid.js'
 let lastRenderTime = 0
 let gameOver = false
 const gameboard = document.getElementById('game-board')
+const scoreBox = document.getElementById('score-box')
 
 function main(currentTime) {
     if (gameOver) {
@@ -25,12 +26,27 @@ function main(currentTime) {
     console.log('render')
 }
 
+// Test the function calculateStore
+// window.testCalculateScore = calculateScore
+
 window.requestAnimationFrame(main)
 
 function update(){
-    updateSnake()
+    const snakeBodyLength = updateSnake()
+    const score = calculateScore(snakeBodyLength)
+    scoreBox.innerHTML = `SCORE : ${score}`
     updateFood()
     checkGameOver()
+}
+
+function calculateScore(amount) {
+    let rate = 1
+    const score = amount
+    while (amount >= 10) {
+        rate += 1
+        amount -= 10
+    }
+    return rate * score
 }
 
 function draw() {

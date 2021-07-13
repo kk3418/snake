@@ -14,6 +14,7 @@ export function update() {
     }
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
+    return snakeBody.length
 }
 
 export function draw(gameboard) {
@@ -38,8 +39,7 @@ export function eatFood(position, { ignoreHead= false}= {}) {
 }
 
 function equalPosition(pos1, pos2) {
-    if((pos1.x === pos2.x) && (pos1.y === pos2.y)) return true
-    return false
+    return (pos1.x === pos2.x) && (pos1.y === pos2.y)
 }
 
 function addToSnakeBody() {
