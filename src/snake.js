@@ -1,20 +1,22 @@
 import { getInputDirection } from './input.js'
 
 export  const SNAKE_SPEED = 5 //How many times the snake moves per second
-const snakeBody = [
-    { x: 11, y: 18 },
+let snakeBody = [
+    { x: 11, y: 18, color: 'blue' },
 ]
 let newPiece = 0
+const colors = []
 
 export function update() {
     addToSnakeBody()
+    addColor()
     const inputDirection = getInputDirection()
     for (let i=snakeBody.length-2; i>=0; i--) {
         snakeBody[i+1] = {...snakeBody[i]}
     }
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
-    return snakeBody.length
+    snakeBody[0].color = 'blue'
 }
 
 export function draw(gameboard) {
@@ -22,12 +24,13 @@ export function draw(gameboard) {
         const snakeElement = document.createElement('div')
         snakeElement.style.gridRowStart = piece.y
         snakeElement.style.gridColumnStart = piece.x
-        snakeElement.classList.add('snake')
+        snakeElement.classList.add('snake', piece.color)
         gameboard.appendChild(snakeElement)
     })
 }
 
-export function expandSnake(amount) {
+export function expandSnake(amount, newColor) {
+    colors.push(newColor)
     newPiece += amount
 }
 
@@ -49,8 +52,18 @@ function addToSnakeBody() {
     newPiece = 0
 }
 
+function addColor() {
+    colors.forEach((color, index) => {
+        snakeBody[index].color = color 
+    })
+}
+
 export function getSnakeHead() {
     return snakeBody[0]
+}
+
+export function getSnakeLength() {
+    return snakeBody.length
 }
 
 export function touchSelf() {

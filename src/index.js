@@ -1,9 +1,11 @@
-import { SNAKE_SPEED, update as updateSnake, draw as drawSnake, getSnakeHead, touchSelf } from './snake.js'
+import { SNAKE_SPEED, update as updateSnake, draw as drawSnake, getSnakeHead, touchSelf, getSnakeLength } from './snake.js'
 import { update as updateFood, draw as drawFood } from './food.js'
 import { outsideGrid } from './grid.js'
 
 let lastRenderTime = 0
 let gameOver = false
+let lastSnakeLength = 1
+let score = 0
 const gameboard = document.getElementById('game-board')
 const scoreBox = document.getElementById('score-box')
 
@@ -27,26 +29,24 @@ function main(currentTime) {
 }
 
 // Test the function calculateStore
-// window.testCalculateScore = calculateScore
+window.testCalculateScore = calculateScore
 
 window.requestAnimationFrame(main)
 
 function update(){
-    const snakeBodyLength = updateSnake()
-    const score = calculateScore(snakeBodyLength)
-    scoreBox.innerHTML = `SCORE : ${score}`
+    updateSnake()
     updateFood()
+    if (lastSnakeLength < getSnakeLength()) {
+        score += calculateScore(getSnakeLength() - 1)
+        lastSnakeLength = getSnakeLength()
+    }
+    scoreBox.innerHTML = `SCORE : ${score}`
     checkGameOver()
 }
 
-function calculateScore(amount) {
-    let rate = 1
-    const score = amount
-    while (amount >= 10) {
-        rate += 1
-        amount -= 10
-    }
-    return rate * score
+function calculateScore(level) {
+    const rate = Math.floor(level / 10) + 1
+    return rate
 }
 
 function draw() {
