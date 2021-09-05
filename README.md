@@ -5,4 +5,4 @@
 * score += amount
 [Go to Snake game](https://sideproject-snake.netlify.app/)
 
-![alt app's gif](https://media.giphy.com/media/Zq32BDIXtWW05BjxGi/giphy.gif)
+![alt app's gif](https://media.giphy.com/media/uOZ3MA8LSyusGGsf6l/giphy.gif)
