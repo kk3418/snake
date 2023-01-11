@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "a sample snake game",
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@snowpack/plugin-babel": "^2.1.5",
-    "snowpack": "^2.18.4"
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@snowpack/plugin-babel": "^2.1.7",
+    "snowpack": "^3.8.8"
   },
   "author": "Kevin",
   "license": "ISC",
